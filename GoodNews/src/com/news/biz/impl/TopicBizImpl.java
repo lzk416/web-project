@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.news.dao.NewsinfoDAO;
 import com.news.dao.TopicDAO;
+import com.news.entity.Topic;
 
 public class TopicBizImpl implements TopicDAO{
 	TopicDAO topicDAO;
@@ -14,5 +15,7 @@ public class TopicBizImpl implements TopicDAO{
 	public List getALLTopics() {
 		return topicDAO.getALLTopics();
 	}
-
+	public void addTopic(Topic topic) {
+		topicDAO.addTopic(topic);
+	}
 }

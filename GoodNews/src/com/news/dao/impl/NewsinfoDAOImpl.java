@@ -10,6 +10,7 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import com.news.dao.NewsinfoDAO;
+import com.news.entity.Admin;
 import com.news.entity.Newsinfo;
 
 public class NewsinfoDAOImpl implements NewsinfoDAO {
@@ -74,4 +75,19 @@ public class NewsinfoDAOImpl implements NewsinfoDAO {
 		return newsinfo;
 	}
 
+	public void addNews(Newsinfo newsinfo) {
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(newsinfo);
+		
+	}
+	//添加新闻的话，直接往session中都Newsinfo即可
+	public void updateNews(Newsinfo newsinfo) {
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(newsinfo);
+	}
+
+	public void deleteNewsinfo(Newsinfo newsinfo) {
+		Session session = sessionFactory.getCurrentSession();
+		session.delete(newsinfo);
+	}
 }

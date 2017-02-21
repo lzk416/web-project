@@ -10,7 +10,31 @@
 		</action>
 		<action name="newsread" class="newsinfoAction" method="newsreas">
 			<result name="news_read">/news_read.jsp</result>
-		</action>
+		</action>  
+		<action name="*" class="AdminActions" method="{1}">
+			<result name="index" type="redirectAction">index </result>
+		 </action>
+		 <action name="toNewsAdd" class="newsinfoAction" method="toNewsAdd">
+		 	<result name="news_add">/newspages/news_add.jsp</result>
+		 </action> 
+		 <action name="doNewsAdd" class="newsinfoAction" method="doNewsAdd">
+		 	<result name="admin" type="redirectAction">admin.jsp</result>
+		 </action>
+		 <action name="toNewsModify" class="newsinfoAction" method="toNewsModify">
+		 	<result name="news_modify">newspages/news_modify.jsp</result>
+		 </action>
+		 <action name="doNewsModify" class="newsinfoAction" method="doNewsModify">
+		 	<result name="admin" type="redirectAction">admin.jsp</result>
+		 </action>
+		 <action name="deleteNews" class="newsinfoAction" method="deleteNews">
+		 	<result name="admin" type="redirectAction">admin.jsp</result>
+		 </action>
+		  <action name="addtopic" class="topicAction" method="addtopic">
+		 	<result name="admin" type="redirectAction">admin.jsp</result>
+		 </action>
+		  <action name="topiclist" class="topicAction" method="topiclist">
+		 	<result name="topic_list">topic_list.jsp</result>
+		 </action>
     </package>
 </struts>    
        

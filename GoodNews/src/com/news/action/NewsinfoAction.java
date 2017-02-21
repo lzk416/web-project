@@ -1,5 +1,6 @@
 package com.news.action;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.news.biz.NewsinfoBiz;
 import com.news.biz.TopicBiz;
+import com.news.entity.Admin;
 import com.news.entity.Newsinfo;
 import com.news.entity.Pager;
 import com.news.entity.Topic;
@@ -38,6 +40,8 @@ public class NewsinfoAction extends ActionSupport implements RequestAware,Sessio
 	public void setTopicBiz(TopicBiz topicBiz) {
 		this.topicBiz = topicBiz;
 	}
+	//newsinfoBiz这个就是控制反转了，在applicationContext中设置的
+	//如果是有注入了其他的，在property就写它，不然的话就写sessionFactory
 	NewsinfoBiz newsinfoBiz;
 
 	public void setNewsinfoBiz(NewsinfoBiz newsinfoBiz) {
@@ -113,5 +117,59 @@ public class NewsinfoAction extends ActionSupport implements RequestAware,Sessio
 		List topicList = topicBiz.getALLTopics();
 		request.put("topicList", topicList);
 		return "news_read";
+	}
+	public String admin() throws Exception {
+		List newsinfoList=null;
+		int curPage=1;
+		if(pager!=null)
+			curPage=pager.getCurPage();
+		if(newsinfo==null){
+			newsinfoList=newsinfoBiz.getAllNewsinfoByPage(curPage,10);
+			pager=newsinfoBiz.getPagerOfAllNewsinfo(10);
+		}else{
+			newsinfoList=newsinfoBiz.getNewsinfoByConditionAndPage(newsinfo, curPage, 10);
+			pager=newsinfoBiz.getPagerOfNewsinfo(newsinfo,10);			
+		}
+		pager.setCurPage(curPage);
+		request.put("newsinfoList", newsinfoList);
+		List topicList=topicBiz.getALLTopics();
+		request.put("topicList", topicList);
+		return "admin";
+	}
+	
+	public String toNewsAdd() throws Exception{
+		List topicList = topicBiz.getALLTopics();
+		request.put("topicList", topicList);
+		return"news_add";
+	}
+	public String doNewsAdd() throws Exception{
+		Admin admin = (Admin) session.get("admin");
+		newsinfo.setAuthor(admin.getLoginName());
+		newsinfo.setCreateDate(new Date());
+		//进行新闻添加的操作
+		newsinfoBiz.addNews(newsinfo);
+		//完成之后返回主页admin
+		return "admin";
+	}
+	//这个是从哪个修改按钮到哪个修改的框框页面。
+	public String toNewsModify() throws Exception{
+		Newsinfo newsinfo = newsinfoBiz.getNewsinfoById(id);
+		request.put("newsinfo", newsinfo);
+		List topicList = topicBiz.getALLTopics();
+		request.put("topicList",topicList);
+		return "news_modify";
+	}
+	//session已经在上面的Map(String,Object)中定义了。
+	public String doNewsModify() throws Exception{
+		Admin admin = (Admin) session.get("admin");
+		newsinfo.setAuthor(admin.getLoginName());
+		newsinfo.setCreateDate(new Date());
+		newsinfoBiz.updateNews(newsinfo);
+		return "admin";
+	}
+	
+	public String deleteNews(int id){
+		newsinfoBiz.deleteNews(id);
+		return "admin";
 	}
 }

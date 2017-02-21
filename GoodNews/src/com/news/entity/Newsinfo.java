@@ -1,6 +1,7 @@
 package com.news.entity;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Newsinfo entity. @author MyEclipse Persistence Tools
@@ -13,7 +14,7 @@ public class Newsinfo implements java.io.Serializable {
 	private Integer id;
 	private String title;
 	private String author;
-	private Timestamp createDate;
+	private Date createDate;
 	private String content;
 	private String summary;
 	private Topic topic; //用于一对多关联
@@ -68,11 +69,11 @@ public class Newsinfo implements java.io.Serializable {
 		this.author = author;
 	}
 
-	public Timestamp getCreateDate() {
+	public Date getCreateDate() {
 		return this.createDate;
 	}
 
-	public void setCreateDate(Timestamp createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
 

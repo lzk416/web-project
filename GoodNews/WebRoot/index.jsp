@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@ taglib uri='/struts-tags' prefix='s'%>
+<jsp:include page="index-elements/index_top.jsp" />
 <div id="container">
 <!-- s:action 用于设定提交的action-->
 <s:action name="indexsidebar" namespace="/" executeResult="true" />

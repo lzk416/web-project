@@ -11,4 +11,7 @@ public interface NewsinfoBiz {
 	public Pager getPagerOfAllNewsinfo(int pageSize);
 	public Pager getPagerOfNewsinfo(Newsinfo condition,int pageSize);
 	public Newsinfo getNewsinfoById(int id);
+	public void addNews(Newsinfo newsinfo);
+	public void updateNews(Newsinfo newsinfo);
+	public void deleteNews(int id);
 }

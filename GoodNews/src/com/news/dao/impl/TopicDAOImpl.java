@@ -21,4 +21,32 @@ public class TopicDAOImpl implements TopicDAO{
 		Criteria c=session.createCriteria(Topic.class);
 		return c.list();
 	}
+
+	public void addTopic(Topic topic) {
+		Session session =sessionFactory.getCurrentSession();
+		session.saveOrUpdate(topic);
+	}
+
+	public Topic getTopicById(int id) {
+		Session session=sessionFactory.getCurrentSession();
+		Topic topic=(Topic)session.get(Topic.class, id);
+		return topic;
+	}
+	public void deleteTopic(Topic topic) {
+		Session session=sessionFactory.getCurrentSession();
+		session.delete(topic);
+	}
+	
+	public int countTopics() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
+	//�޸�����
+	public void updateTopic(Topic topic) {
+		Session session=sessionFactory.getCurrentSession();
+		session.saveOrUpdate(topic);
+	}
+	
 }

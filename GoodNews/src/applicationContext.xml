@@ -76,4 +76,13 @@
     	<property name="topicBiz" ref="topicBiz"></property>
     	<property name="newsinfoBiz" ref="newsinfoBiz"></property>
     </bean>
+    <bean id="adminDAO" class="com.news.dao.impl.AdminDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="adminBiz" class="com.news.biz.impl.AdminBizImpl">
+    	<property name="adminDAO" ref="adminDAO"></property>
+    </bean>
+    <bean name="adminAction" class="com.news.action.AdminAction" scope="prototype">
+    		<property name="adminBiz" ref="adminBiz"></property>
+    </bean>
 	</beans>

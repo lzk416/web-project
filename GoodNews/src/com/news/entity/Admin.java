@@ -4,7 +4,7 @@ package com.news.entity;
  * Admit entity. @author MyEclipse Persistence Tools
  */
 
-public class Admit implements java.io.Serializable {
+public class Admin implements java.io.Serializable {
 
 	// Fields
 
@@ -15,11 +15,11 @@ public class Admit implements java.io.Serializable {
 	// Constructors
 
 	/** default constructor */
-	public Admit() {
+	public Admin() {
 	}
 
 	/** full constructor */
-	public Admit(String loginName, String loginPwd) {
+	public Admin(String loginName, String loginPwd) {
 		this.loginName = loginName;
 		this.loginPwd = loginPwd;
 	}

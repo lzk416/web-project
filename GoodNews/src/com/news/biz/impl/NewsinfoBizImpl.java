@@ -42,5 +42,15 @@ public class NewsinfoBizImpl implements NewsinfoBiz {
 
 		return newsinfoDAO.getNewsinfoById(id);
 	}
-
+	public void addNews(Newsinfo newsinfo) {
+		newsinfoDAO.addNews(newsinfo);
+		
+	}
+	public void updateNews(Newsinfo newsinfo) {
+		newsinfoDAO.updateNews(newsinfo);
+	}
+	public void deleteNews(int id) {
+		Newsinfo newsinfo = newsinfoDAO.getNewsinfoById(id);
+		newsinfoDAO.deleteNewsinfo(newsinfo);
+	}
 }
