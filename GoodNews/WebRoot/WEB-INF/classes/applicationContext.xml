@@ -66,4 +66,14 @@
     <bean id="topicDAO" class="com.news.dao.impl.TopicDAOImpl">
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
+    <bean id="newsinfoBiz" class="com.news.biz.impl.NewsinfoBizImpl">
+    	<property name="newsinfoDAO" ref="newsinfoDAO"></property>
+    </bean>
+    <bean id="topicBiz" class="com.news.biz.impl.TopicBizImpl">
+    	<property name="topicDAO" ref ="topicDAO"></property>
+    </bean>
+    <bean name="index" class="com.news.action.NewsinfoAction" scope="prototype">
+    	<property name="topicBiz" ref="topicBiz"></property>
+    	<property name="newsinfoBiz" ref="newsinfoBiz"></property>
+    </bean>
 	</beans>

@@ -9,4 +9,5 @@ public interface NewsinfoDAO {
 	public Integer getCountOfAllNewsinfo();
 	public List getNewsinfoByConditionAndPage(Newsinfo condition,int page,int pageSize);
 	public Integer getCountOfNewsinfo(Newsinfo condition);
+	public Newsinfo getNewsinfoById(int id);
 }

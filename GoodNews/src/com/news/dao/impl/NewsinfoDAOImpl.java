@@ -68,4 +68,10 @@ public class NewsinfoDAOImpl implements NewsinfoDAO {
 		return c.list().size();
 	}
 
+	public Newsinfo getNewsinfoById(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		Newsinfo newsinfo = (Newsinfo) session.get(Newsinfo.class, id);
+		return newsinfo;
+	}
+
 }
