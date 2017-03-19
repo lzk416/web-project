@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	 <constant name="struts.i18n.encoding" value="gbk"></constant>
+	 <package name="restrant" namespace="/" extends="struts-default">
+	  <!--配置拦截器  -->
+	  <interceptors>
+	  	<interceptor name="loginCheck" class="com.restrant.interceptor.AuthorityInterceptor" />
+	  </interceptors>
+	  <!-- 设置全局的返回值,返回首页 -->         
+	    <global-results>             
+	    	<result name="login" type="redirectAction">/toShowMeal</result>         
+	    </global-results>     
+	 	<action name="toShowMeal" class="com.restrant.action.MealAction" >
+	 		<result name="toShowMeal">show.jsp</result>
+	 	</action>
+	 	<action name="validateLogin" class="userAction" method="validationLogin">
+	 		<result name="toShowMeal" type="redirectAction">toShowMeal</result>
+	 	</action>
+	 	<action name="addtoshopcart" class="cartAction" method="addtoshopcart">
+	 		<result name="shopCart">/showCart.jsp</result>
+	 		<interceptor-ref name="loginCheck" /> 
+	 		<interceptor-ref name="defaultStack" />
+	 	</action>
+	 	<action name="updateSelectedQuantity" class="cartAction" method="updateSelectedQuantity">
+	 		<result name="shopCart">/shopCart.jsp</result>
+			<interceptor-ref name="loginCheck"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+	 	</action>
+	 	<action name="deleteSelectedOrders" class="cartAction" method="deleteSelectedOrders">
+	 		<result name="shopCart">/shopCart.jsp</result>
+	 		<interceptor-ref name="loginCheck"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+	 	</action>
+	 	<action name="clearCart" class="cartAction" method="clearCart">
+	 		<result name="shopCart">/shopCart.jsp</result>
+	 		<interceptor-ref name="loginCheck"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+	 	</action>
+	 </package>
+</struts>    
