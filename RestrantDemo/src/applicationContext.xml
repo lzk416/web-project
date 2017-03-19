@@ -62,7 +62,7 @@
 	    	<aop:advisor advice-ref="txAdvice" pointcut-ref="bizMethods" /> 
 	    </aop:config>
 	    
-	    <bean id="mealDAO" class="com.restrant.dao.Impl.MealDaoImpl">
+	    <bean id="mealDAO" class="com.restrant.dao.Impl.MealDAOImpl">
 	    	<property name="sessionFactory" ref="sessionFactory"></property>
 	    </bean>
 	    <bean id="mealBiz" class="com.restrant.biz.Impl.MealBizImpl">
@@ -83,5 +83,14 @@
 	    </bean>
 	    <bean name="userAction" class="com.restrant.action.UserAction" scope="prototype"> 
 	    	<property name="userBiz" ref="userBiz"></property>
+	    </bean>
+	    <bean id="orderDtsDAO" class="com.restrant.dao.Impl.OrderDtsDAOImpl">
+	   		<property name="sessionFactory" ref="sessionFactory"></property> 
+	    </bean>
+	     <bean id="orderDtsBiz" class="com.restrant.biz.Impl.OrderDtsBizImpl">
+	   		<property name="orderDtsDao" ref="orderDtsDao"></property> 
+	    </bean>
+	    <bean name="ordersAction" class="com.restrant.action.OrdersAction">
+	    	<property name="orderDtsBiz" ref="orderDtsBiz"></property>
 	    </bean>
 	</beans>

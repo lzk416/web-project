@@ -37,5 +37,10 @@
 	 		<interceptor-ref name="loginCheck"></interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 	 	</action>
+	 	<action name="addOrders" class="com.restrant.action.OrdersAction" method="addOrders">
+	 		<result name="show" type="redirectAction">toShowMeal</result>
+	 		<interceptor-ref name="loginCheck"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+	 	</action>
 	 </package>
 </struts>    

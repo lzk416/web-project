@@ -1,6 +1,5 @@
 package com.restrant.entity;
 
-import org.hibernate.criterion.Order;
 
 /**
  * Orderdts entity. @author MyEclipse Persistence Tools
@@ -11,7 +10,7 @@ public class Orderdts implements java.io.Serializable {
 	// Fields
 
 	private Integer odid;
-	private Order orders;
+	private Orders orders;
 	private Double mealPrice;
 	private Integer mealCount;
 	private Meal meal;
@@ -19,16 +18,18 @@ public class Orderdts implements java.io.Serializable {
 
 	// Constructors
 
-	public Order getOrders() {
-		return orders;
-	}
-
-	public void setOrders(Order orders) {
-		this.orders = orders;
-	}
+	
 
 	public Meal getMeal() {
 		return meal;
+	}
+
+	public Orders getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Orders orders) {
+		this.orders = orders;
 	}
 
 	public void setMeal(Meal meal) {

@@ -13,7 +13,7 @@ import org.hibernate.criterion.Restrictions;
 import com.restrant.dao.MealDao;
 import com.restrant.entity.Meal;
 
-public class MealDaoImpl implements MealDao{
+public class MealDAOImpl implements MealDao{
 	SessionFactory sessionFactory;
 	
 	public void setSessionFactory(SessionFactory sessionFactory) {
