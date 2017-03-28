@@ -42,5 +42,57 @@
 	 		<interceptor-ref name="loginCheck"></interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 	 	</action>
+	 	<action name="toMyOrders" class="OrdersAction" method="toMyOrders">
+	 		<result name="myorders">/myorders.jsp</result>
+	 		<interceptor-ref name="loginCheck"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+	 	</action>
+	 	<action name="toOrdersDetails" class="OrdersAction" method="toOrdersDetails">
+	 		<result name="toOrdersDetails">/myordersdetails.jsp</result>
+	 		<interceptor-ref name="loginCheck"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+	 	</action>
+	 	<action name="deleteOrders" class="OrdersAction" method="deleteOrders">
+	 		<result name="toMyOrders" type="redirectAction">toMyOrders</result>
+	 		<interceptor-ref name="loginCheck"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+	 	</action>
+	 	<action name="toAddMeal" class="mealAction" method="toAddMeal">
+	 		<result name="addMeal">/addMeal.jsp</result>
+	 	</action>
+	 	<action name="doAddMeal" class="mealAction" method="doAddMeal">
+	 		<result name="toShowMeal" type=" redirectAction">toShowMeal</result>
+	 	</action>
+	 	<!-- 点击管理餐品时候的action -->
+	 	<action name="toManageMeal"  class="mealAction" method="toManageMeal">
+	 		<result name="managemeal">/managemeal.jsp</result>
+	 		<interceptor-ref name="loginCheck"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+	 	</action>
+	 	<action name="toUpdateMeal" class="mealAction" method="toUpdateMeal">
+	 		<result name="updateMeal">/updateMeal.jsp</result>
+	 		<interceptor-ref name="loginCheck"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+	 	</action>
+	 	<action name="doUpdateMeal" class="mealAction" method="doUpdateMeal">
+	 		<result name="toShowMeal" type="redirectAction">toShowMeal</result>
+	 		<interceptor-ref name="loginCheck"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+	 	</action>
+	 	<action name="deleteMeal" class="mealAction" method="deleteMeal">
+			<result name="toManageMeal" type="redirectAction">toManageMeal</result>		
+			<interceptor-ref name="loginCheck" />	
+			<interceptor-ref name="defaultStack" />			
+		</action>		
+		<action name="toManageOrders" class="ordersAction" method="toManageOrders">
+			<result name="manageorders">/manageorders.jsp</result>
+			<interceptor-ref name="loginCheck" />	
+			<interceptor-ref name="defaultStack" />	
+		</action>
+		<action name="handleOrders" class="ordersAction" method="handleOrders">
+			<result name="toManageOrders" type="redirectAction">toManageOrders</result>
+			<interceptor-ref name="loginCheck" />	
+			<interceptor-ref name="defaultStack" />	
+		</action>
 	 </package>
 </struts>    

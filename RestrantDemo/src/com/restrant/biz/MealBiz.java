@@ -11,4 +11,7 @@ public interface MealBiz {
 	public List getMealByCondition(Meal condition,int page);
 	public Pager getPagerOfMeal(Meal condition);
 	public Meal getMealByMealId(int mealId);
+	public void addMeal(Meal meal);
+	public void updateMeal(Meal meal);
+	public void deleteMeal(int mealId);
 }

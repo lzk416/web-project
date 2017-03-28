@@ -10,10 +10,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
-import com.restrant.dao.MealDao;
+import com.restrant.dao.MealDAO;
 import com.restrant.entity.Meal;
 
-public class MealDAOImpl implements MealDao{
+public class MealDAOImpl implements MealDAO{
 	SessionFactory sessionFactory;
 	
 	public void setSessionFactory(SessionFactory sessionFactory) {
@@ -75,5 +75,17 @@ public class MealDAOImpl implements MealDao{
 	public Meal getMealByMealId(int mealId){
 		Session session= sessionFactory.getCurrentSession();
 		return (Meal) session.get(Meal.class, mealId);
+	}
+	public void addMeal(Meal meal) {
+		Session session = sessionFactory.getCurrentSession();
+		session.save(meal);
+	}
+	public void updateMeal(Meal meal) {
+		Session session = sessionFactory.getCurrentSession();
+		session.update(meal);
+	}
+	public void deleteMeal(Meal meal) {
+		Session session = sessionFactory.getCurrentSession();
+		session.delete(meal);
 	}
 }

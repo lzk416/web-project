@@ -3,14 +3,14 @@ package com.restrant.biz.Impl;
 import java.util.List;
 
 import com.restrant.biz.MealBiz;
-import com.restrant.dao.MealDao;
+import com.restrant.dao.MealDAO;
 import com.restrant.entity.Meal;
 import com.restrant.entity.Pager;
 
 public class MealBizImpl implements MealBiz {
-	MealDao mealDao;
+	MealDAO mealDao;
 	
-	public void setMealDao(MealDao mealDao) {
+	public void setMealDao(MealDAO mealDao) {
 		this.mealDao = mealDao;
 	}
 
@@ -40,6 +40,19 @@ public class MealBizImpl implements MealBiz {
 	}
 	public Meal getMealByMealId(int mealId) {
 		return mealDao.getMealByMealId(mealId);
+	}
+
+	public void addMeal(Meal meal) {
+		mealDao.addMeal(meal);
+	}
+
+	public void updateMeal(Meal meal) {
+		mealDao.updateMeal(meal);
+	}
+
+	public void deleteMeal(int mealId) {
+		Meal meal = mealDao.getMealByMealId(mealId);
+		mealDao.deleteMeal(meal);
 	}
 	
 }

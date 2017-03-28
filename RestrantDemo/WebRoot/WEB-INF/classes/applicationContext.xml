@@ -90,7 +90,14 @@
 	     <bean id="orderDtsBiz" class="com.restrant.biz.Impl.OrderDtsBizImpl">
 	   		<property name="orderDtsDao" ref="orderDtsDao"></property> 
 	    </bean>
-	    <bean name="ordersAction" class="com.restrant.action.OrdersAction">
+	    <bean id="OrdersDAO" class="com.restrant.dao.Impl.OrdersDAOImpl">
+	    	<property name="sessionFactory" ref="sessionFactory"></property>
+	    </bean>
+	    <bean id="ordersBiz" class="com.restrant.biz.Impl.OrdersBizImpl">
+	    	<property name="ordersDAO" ref="OrdersDAO"></property>
+	    </bean>
+	    <bean name="ordersAction" class="com.restrant.action.OrdersAction" scope="prototype">
+	    	<property name="ordersBiz" ref="ordersBiz"></property>
 	    	<property name="orderDtsBiz" ref="orderDtsBiz"></property>
 	    </bean>
 	</beans>
